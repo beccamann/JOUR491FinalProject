@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Thefts in Lincoln Nebraska</h1>
+<p>In the past five years, Lincoln, Nebraska, has been home to 42,225 thefts. There are 11 different types of classifications of thefts that can be found below. The categories are organized by the popularity of the crime. The most thefts have come from shoplifting and the fewest from pick pocketing.</p>
+
+<ul>{% for object in crime_types %}
+<li><a href="{{ object.get_absolute_url }}">{{ object.crime_type }}</a>: {{ object.report__count }}</li>
+{% endfor %}</ul>
+
+
+<h1>Worst Locations in Lincoln for Theft</h1>
+<p>Theft occurs at many different locations across the city. Listed below are the top 25 locations with the most theft since 2010.</p>
+
+<ul>{% for object in locations %}
+<li>{% if object.location %}<a href="{{ object.get_absolute_url }}">{{ object.location }}</a>: {{ object.report__count }} {% else %} Unknown Location: {{ object.report__count }}{% endif %}</li>
+{% endfor %}</ul>
+
+
+<img src=<a href="http://i.imgur.com/rXZUtQD.png"><img src="http://i.imgur.com/rXZUtQD.png" border="0"/></a>
+
+{% endblock %}
+
+

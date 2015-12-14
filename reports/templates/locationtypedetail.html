@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>{{ crime_type }} ({{ reports|length }}) at {{ location }}</h1>
+
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Report Date</th>
+                  <th>Loss</th>
+                  <th>Location</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for object in reports %}<tr>
+                  <td>{{ object.report_date }}</td>
+                  <td>${{ object.loss }}</td>
+                  <td><a href="/{{ crime_type.get_absolute_url }}{{ object.location.location_slug }}/">{{ object.location }}</td>
+                </tr>{% endfor %}
+               </tbody>
+            </table>
+          </div>
+
+{% endblock %}
+
